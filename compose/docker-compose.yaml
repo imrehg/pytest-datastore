@@ -1,0 +1,8 @@
+version: '3'
+services:
+    datastore:
+        image: google/cloud-sdk
+        environment:
+            - PORT=8001
+            - PROJECT_ID=dummy-project
+        command: ["sh", "-c", "gcloud beta emulators datastore start --no-store-on-disk --project=$$PROJECT_ID --host-port=0.0.0.0:$$PORT"]
