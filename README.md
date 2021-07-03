@@ -16,5 +16,7 @@ Aim is to run GCP Datastore emulation as part of pytest somehow.
   thus a multiple tests can be run on a single setup... More manual and likely error-prone,
   but the best fit?
 * Could also adjust the fixtures to automatically preload some data? As in [fixtures requesting other fixtures](https://docs.pytest.org/en/latest/how-to/fixtures.html#fixtures-can-request-other-fixtures)?
+* [`test_docker.py`](test_docker.py) implements tests with external Docker image spun up
+* [`test_external.py`](test_external.py) implements tests with emulator process spun up (when `gcloud` and the relevant components are installed locally)
 
 Ideally this is combined with `tox` to run a proper testing environment.
