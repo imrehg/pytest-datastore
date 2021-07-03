@@ -85,6 +85,7 @@ def datastore_env_setup(monkeypatch):
 # Setup done, tests start below
 
 
+@pytest.mark.docker
 def test_datastore_empty(datastore_container):
     client = datastore.Client()
     key = client.key("EntityKind", 1234)
@@ -93,6 +94,7 @@ def test_datastore_empty(datastore_container):
 
 
 # Example from https://pypi.org/project/google-cloud-datastore/#example-usage
+@pytest.mark.docker
 def test_datastore_store(datastore_container):
     # Create, populate and persist an entity with keyID=1234
     client = datastore.Client()

@@ -3,3 +3,4 @@ pytest-docker-py
 requests
 docker
 google-cloud-datastore
+pytest-xprocess
