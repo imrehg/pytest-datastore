@@ -30,7 +30,9 @@ def _wait_on_health_status(client, container, status):
 
 @pytest.fixture(scope="session")
 def datastore_container(request):
-    # rename to datastore
+    """Set up an emulated Datastore with the gcloud CLI
+    inside a Docker container.
+    """
     SECOND = 1_000_000_000
     client = docker.from_env()
     container = client.containers.create(
@@ -67,7 +69,10 @@ def datastore_container(request):
 
 
 @pytest.fixture(autouse=True)
-def env_setup(monkeypatch):
+def datastore_env_setup(monkeypatch):
+    """Set up all relevant Datastore env variables to be used
+    with emulation.
+    """
     monkeypatch.setenv("DATASTORE_EMULATOR_HOST", "localhost:8001")
     monkeypatch.setenv("DATASTORE_PROJECT_ID", DATASTORE_PROJECT_ID)
     monkeypatch.setenv("DATASTORE_DATASET", DATASTORE_PROJECT_ID)
